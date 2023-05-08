@@ -30,5 +30,6 @@ def get_random_ingredients(kind=None):
     :raise lumache.InvalidKindError: If the kind is invalid.
     :return: The ingredients list.
     :rtype: list[str]
+    :acknowledgement: Test
     """
     return ["shells", "gorgonzola", "parsley"]
