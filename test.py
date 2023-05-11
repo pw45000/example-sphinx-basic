@@ -6,7 +6,8 @@ import torch
 
 def flatten_nested_dictionary(a_dictionary: dict):
     """
-    given a multidimensional dictionary, collapse it into a single dictionary.
+    Given a multidimensional dictionary, collapse it into a single dimensional dictionary.
+    
     :description: Flattens a multidimensional dictionary into a 1d dictionary. This means all keys and values
     are at the same level, regardless of nesting. Why? Because this is to aid in simply checking for settings,
     not actually manipulating values. So, for instance, this function will be called such that we can let's say
@@ -32,6 +33,7 @@ def flatten_nested_dictionary(a_dictionary: dict):
 def decode_encoded_tokenized_tensor(a_encoded_tokens):
     """
     Decode a base64 encoded tokenized tensor into a tensor.
+    
     :description: In this function's case, it decodes a base64 encoded tokenized tensor into a tensor, such that
     it can be fed into the backend's model. It does not detokenize the list, as there is no tokenizer on the backend.
     :param: a_encoded_tokens- The encoded base64 string sent back from the backend to decode.
@@ -44,7 +46,8 @@ def decode_encoded_tokenized_tensor(a_encoded_tokens):
 
 def get_encoded_str_from_token_list(message):
     """
-    :name get_encoded_str_from_token_list - gets the base 64 encoded string given a list of tokens.
+    Gets the base 64 encoded string given a list of tokens.
+    
     :description: Encodes a list of tokens into a base 64 string. Why? Simple. Easy serialization of complex data.
     My friend, Anthony Mercurio, recommended me this as he saw it being used by a start-up named NovelAI for
     performance reasons. I can see why, as the only other way of serializing a stupidly large list would be using
@@ -59,7 +62,7 @@ def get_encoded_str_from_token_list(message):
     :param message: The list of tokens representing an arbitrary message. Typically is the entire chat history in
     practice, however.
     :return: str, representing the original message now encoded into base64.
-    :acknowledgements Antony Mercurio, who recommended me to utilize this method and gave me portions of the code.
+    :acknowledgements: Antony Mercurio, who recommended me to utilize this method and gave me portions of the code.
     """
     encoded_str = json.dumps(
         base64.b64encode(bytes(json.dumps(message.tolist()), encoding='utf-8')).decode("utf-8"))
