@@ -1,8 +1,5 @@
 API
 ===
 
-.. autosummary::
-   :toctree: generated
+.. autofunction:: test.get_encoded_str_from_token_list
 
-.. autoclass:: test.Backend_Server
-   :members:
